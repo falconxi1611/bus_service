@@ -1,11 +1,10 @@
 <?php
-$api  = "http://busmap.somee.com/api/Route/GetRoutes";
-$data = file_get_contents($api);
-$data = json_decode($data);
+$code = $_GET['code'];
+$api  = "http://busmap.somee.com/api/Route/GetRoute?code={$code}";
+$data = json_decode(file_get_contents($api));
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
-
 <head>
     <title>Bus Service</title>
     <link rel="shortcut icon" href="images/icon.png">
@@ -132,94 +131,87 @@ $data = json_decode($data);
                 <a href="index.php">Home</a>
                 <span>/</span>
             </li>
-            <li>List</li>
+            <li>Add</li>
         </ul>
     </div>
 </div>
 <!-- //short-->
 <!-- //banner -->
 
-<!-- icons page-->
-<div class="w3_wthree_agileits_icons main-grid-border">
-    <div class="container">
-        <h3 class="title">DANH SÁCH TUYẾN XE BUÝT</h3>
-        <div class="grid_3 grid_4 w3_agileits_icons_page">
-            <div class="icons">
-                <section id="new">
-                    <?php
-                    $size = count($data);
-                    ?>
-                    <h3 class="page-header page-header icon-subheading"><?php echo $size . " Tuyến Xe" ?></h3>
+<!-- Codes -->
 
-                    <?php
-                    for ($i = 0;
-                         $i < $size;
-                         $i++)
-                    {
-                        ?>
-                        <div class="row fontawesome-icon-list">
-
-                            <div class="icon-box col-md-3 col-sm-4">
-                                <a class="agile-icon" href="chitiettuyenxe.php?code=<?php echo $data[$i]->code ?>">
-                                    <i class="fa fa-bus" aria-hidden="true" bord></i>
-                                    <strong style="font-weight: bold"><?php echo $data[$i]->code . ". " ?></strong>
-                                    <span class="text-muted"><?php echo $data[$i]->name ?></span>
-                                </a>
-                            </div>
-                            <?php
-                            $i++;
-                            if ($i < $size)
-                            {
-                                ?>
-                                <div class="icon-box col-md-3 col-sm-4">
-                                    <a class="agile-icon" href="chitiettuyenxe.php?code=<?php echo $data[$i]->code ?>">
-                                        <i class="fa fa-bus" aria-hidden="true"></i>
-                                        <strong style="font-weight: bold"><?php echo $data[$i]->code . ". " ?></strong>
-                                        <span class="text-muted"><?php echo $data[$i]->name ?></span>
-                                    </a>
-                                </div>
-                                <?php
-                            }
-                            $i++;
-                            if ($i < $size)
-                            {
-                                ?>
-                                <div class="icon-box col-md-3 col-sm-4">
-                                    <a class="agile-icon" href="chitiettuyenxe.php?code=<?php echo $data[$i]->code ?>">
-                                        <i class="fa fa-bus"
-                                           aria-hidden="true"></i>
-                                        <strong style="font-weight: bold"><?php echo $data[$i]->code . ". " ?></strong>
-                                        <span class="text-muted"><?php echo $data[$i]->name ?></span>
-                                    </a>
-                                </div>
-                                <?php
-                            }
-                            $i++;
-                            if ($i < $size)
-                            {
-                                ?>
-                                <div class="icon-box col-md-3 col-sm-4">
-                                    <a class="agile-icon" href="chitiettuyenxe.php?code=<?php echo $data[$i]->code ?>">
-                                        <i class="fa fa-bus"
-                                           aria-hidden="true"></i>
-                                        <strong style="font-weight: bold"><?php echo $data[$i]->code . ". " ?></strong>
-                                        <span class="text-muted"><?php echo $data[$i]->name ?></span>
-                                    </a>
-                                </div>
-                                <?php
-                            }
-                            ?>
-                        </div>
-                        <?php
-                    }
-                    ?>
-                </section>
-            </div>
+</div>
+<!-- //Codes -->
+<form style="margin: 100px" action="update.php" method="post">
+    <!--    <div class="alert alert-danger">-->
+    <!--        <strong>Danger!</strong> Indicates a dangerous or potentially negative action.-->
+    <!--    </div>-->
+    <div class="form-group">
+        <label>Mã số tuyến</label>
+        <input type="text" name="code" class="form-control" value="<?php echo $data->code ?>" readonly>
+    </div>
+    <div class="form-group">
+        <label>Tên tuyến</label>
+        <input type="text" name="name" class="form-control" value="<?php echo $data->name ?>">
+    </div>
+    <div class="form-group">
+        <label>Lượt đi</label>
+        <input type="text" name="routeAB" class="form-control" value="<?php echo $data->routeAB ?>">
+    </div>
+    <div class="form-group">
+        <label>Lượt về</label>
+        <input type="text" name="routeBA" class="form-control" value="<?php echo $data->routeBA ?>">
+    </div>
+    <div class="form-group">
+        <label>Đơn vị đảm nhận</label>
+        <input type="text" name="agencies" class="form-control" value="<?php echo $data->agencies ?>">
+    </div>
+    <div class="form-group">
+        <label>Loại hình hoạt động</label>
+        <input type="text" name="type" class="form-control" value="<?php echo $data->type ?>">
+    </div>
+    <div class="form-group">
+        <label>Cự ly</label>
+        <input type="text" name="distance" class="form-control" value="<?php echo $data->distance ?>">
+    </div>
+    <div class="form-group">
+        <label>Loại xe</label>
+        <input type="text" name="vehicleType" class="form-control" value="<?php echo $data->vehicleType ?>">
+    </div>
+    <div class="form-group">
+        <label>Thời gian hoạt động</label>
+        <input type="text" name="time" class="form-control" value="<?php echo $data->time ?>">
+    </div>
+    <div class="form-group row">
+        <div class="col-xs-3">
+            <label>Giá vé lượt</label>
+            <input class="form-control" name="basicPrice" value="<?php echo $data->basicPrice ?>">
+        </div>
+        <div class="col-xs-3">
+            <label>Giá vé học sinh</label>
+            <input class="form-control" name="studentPrice" value="<?php echo $data->studentPrice ?>">
+        </div>
+        <div class="col-xs-3">
+            <label>Giá vé tập</label>
+            <input class="form-control" name="monthlyPrice" type="text" value="<?php echo $data->monthlyPrice ?>">
         </div>
     </div>
-</div>
-<!-- //icons page-->
-
+    <div class="form-group">
+        <label>Số chuyến</label>
+        <input type="text" name="totalTrips" class="form-control" value="<?php echo $data->totalTrips ?>">
+    </div>
+    <div class="form-group">
+        <label>Thời gian chuyến</label>
+        <input type="text" name="tripTime" class="form-control" value="<?php echo $data->tripTime ?>">
+    </div>
+    <div class="form-group">
+        <label>Giãn cách chuyến</label>
+        <input type="text" name="tripSpacing" class="form-control" value="<?php echo $data->tripSpacing ?>">
+    </div>
+    <input type="submit" name="add" style="margin-top: 30px; width: 100px" class="btn btn-primary" value="Cập nhật">
+    <input type="reset" name="cancel" style="margin-top: 30px;  width: 100px" class="btn btn-danger"
+           value="Hủy">
+</form>
 
 <!-- footer -->
 <div class="footer">

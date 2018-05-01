@@ -41,6 +41,8 @@ $data = json_decode($data);
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
           rel="stylesheet">
     <!-- //Web-Fonts -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 </head>
 
@@ -139,87 +141,81 @@ $data = json_decode($data);
 <!-- //short-->
 <!-- //banner -->
 
-<!-- icons page-->
-<div class="w3_wthree_agileits_icons main-grid-border">
-    <div class="container">
-        <h3 class="title">DANH SÁCH TUYẾN XE BUÝT</h3>
-        <div class="grid_3 grid_4 w3_agileits_icons_page">
-            <div class="icons">
-                <section id="new">
-                    <?php
-                    $size = count($data);
-                    ?>
-                    <h3 class="page-header page-header icon-subheading"><?php echo $size . " Tuyến Xe" ?></h3>
+<!--code-->
+<div class="container">
+    <div class="row">
+        <h1 class="page-header">
+            <div class="crush">Danh sách tuyến xe</div>
+        </h1>
+    </div>
 
+    <div class="row">
+        <div class="col-md-10">
+
+            <div class="table-responsive">
+
+                <table class="table table-sm table-hover">
+                    <thead class="thead-default">
+
+                    <tr class="add-category-row">
+                        <th style="width: 30px;">
+                            <a href="new.php">
+                                <button class="btn-view-fund btn btn-default btn-xs  pull-left" type="button">
+                                    <span class="glyphicon glyphicon-plus green" aria-hidden="true"></span>
+                                </button>
+                            </a>
+                        </th>
+
+
+                        <th colspan="2">Thêm tuyến xe</th>
+
+                        <th style="width: 70px;"></th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
                     <?php
-                    for ($i = 0;
-                         $i < $size;
-                         $i++)
+                    foreach ($data as $value)
                     {
                         ?>
-                        <div class="row fontawesome-icon-list">
+                        <tr>
+                            <td colspan="12"><?php echo($value->code . ". " . $value->name) ?></td>
 
-                            <div class="icon-box col-md-3 col-sm-4">
-                                <a class="agile-icon" href="chitiettuyenxe.php?code=<?php echo $data[$i]->code ?>">
-                                    <i class="fa fa-bus" aria-hidden="true" bord></i>
-                                    <strong style="font-weight: bold"><?php echo $data[$i]->code . ". " ?></strong>
-                                    <span class="text-muted"><?php echo $data[$i]->name ?></span>
+                            <td style="text-align: right;">
+                                <a href="update_form.php?code=<?php echo $value->code ?>">
+                                    <button class="btn-view-fund btn btn-default btn-xs  " type="button">
+                                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                    </button>
                                 </a>
-                            </div>
-                            <?php
-                            $i++;
-                            if ($i < $size)
-                            {
-                                ?>
-                                <div class="icon-box col-md-3 col-sm-4">
-                                    <a class="agile-icon" href="chitiettuyenxe.php?code=<?php echo $data[$i]->code ?>">
-                                        <i class="fa fa-bus" aria-hidden="true"></i>
-                                        <strong style="font-weight: bold"><?php echo $data[$i]->code . ". " ?></strong>
-                                        <span class="text-muted"><?php echo $data[$i]->name ?></span>
-                                    </a>
-                                </div>
-                                <?php
-                            }
-                            $i++;
-                            if ($i < $size)
-                            {
-                                ?>
-                                <div class="icon-box col-md-3 col-sm-4">
-                                    <a class="agile-icon" href="chitiettuyenxe.php?code=<?php echo $data[$i]->code ?>">
-                                        <i class="fa fa-bus"
-                                           aria-hidden="true"></i>
-                                        <strong style="font-weight: bold"><?php echo $data[$i]->code . ". " ?></strong>
-                                        <span class="text-muted"><?php echo $data[$i]->name ?></span>
-                                    </a>
-                                </div>
-                                <?php
-                            }
-                            $i++;
-                            if ($i < $size)
-                            {
-                                ?>
-                                <div class="icon-box col-md-3 col-sm-4">
-                                    <a class="agile-icon" href="chitiettuyenxe.php?code=<?php echo $data[$i]->code ?>">
-                                        <i class="fa fa-bus"
-                                           aria-hidden="true"></i>
-                                        <strong style="font-weight: bold"><?php echo $data[$i]->code . ". " ?></strong>
-                                        <span class="text-muted"><?php echo $data[$i]->name ?></span>
-                                    </a>
-                                </div>
-                                <?php
-                            }
-                            ?>
-                        </div>
+                                <a href="delete.php?code=<?php echo $value->code ?>">
+                                    <button class="btn-view-fund btn btn-default btn-xs" type="button"
+                                            Onclick="return ConfirmDelete();">
+                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"
+                                              onclick="ConfirmDelete"></span>
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
                         <?php
                     }
                     ?>
-                </section>
+                    </tbody>
+                </table>
+
             </div>
         </div>
     </div>
 </div>
 <!-- //icons page-->
-
+<script>
+    function ConfirmDelete() {
+        var x = confirm("Xác nhận xóa ?");
+        if (x)
+            return true;
+        else
+            return false;
+    }
+</script>
 
 <!-- footer -->
 <div class="footer">

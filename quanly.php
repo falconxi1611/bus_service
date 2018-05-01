@@ -1,11 +1,5 @@
-<?php
-$api  = "http://busmap.somee.com/api/Route/GetRoutes";
-$data = file_get_contents($api);
-$data = json_decode($data);
-?>
 <!DOCTYPE html>
 <html lang="zxx">
-
 <head>
     <title>Bus Service</title>
     <link rel="shortcut icon" href="images/icon.png">
@@ -74,18 +68,8 @@ $data = json_decode($data);
                         <li>
                             <a href="tuyen_xe.php">Tuyến xe</a>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quản lý
-                                <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu agile_short_dropdown">
-                                <li>
-                                    <a href="new.php">Thêm mới</a>
-                                </li>
-                                <li>
-                                    <a href="list.php">Cập nhật</a>
-                                </li>
-                            </ul>
+                        <li>
+                            <a href="gallery.html">Tìm kiếm</a>
                         </li>
                         <li>
                             <a href="contact.html">Liên hệ</a>
@@ -132,93 +116,17 @@ $data = json_decode($data);
                 <a href="index.php">Home</a>
                 <span>/</span>
             </li>
-            <li>List</li>
+            <li>Detail</li>
         </ul>
     </div>
 </div>
 <!-- //short-->
 <!-- //banner -->
 
-<!-- icons page-->
-<div class="w3_wthree_agileits_icons main-grid-border">
-    <div class="container">
-        <h3 class="title">DANH SÁCH TUYẾN XE BUÝT</h3>
-        <div class="grid_3 grid_4 w3_agileits_icons_page">
-            <div class="icons">
-                <section id="new">
-                    <?php
-                    $size = count($data);
-                    ?>
-                    <h3 class="page-header page-header icon-subheading"><?php echo $size . " Tuyến Xe" ?></h3>
+<!-- Codes -->
 
-                    <?php
-                    for ($i = 0;
-                         $i < $size;
-                         $i++)
-                    {
-                        ?>
-                        <div class="row fontawesome-icon-list">
-
-                            <div class="icon-box col-md-3 col-sm-4">
-                                <a class="agile-icon" href="chitiettuyenxe.php?code=<?php echo $data[$i]->code ?>">
-                                    <i class="fa fa-bus" aria-hidden="true" bord></i>
-                                    <strong style="font-weight: bold"><?php echo $data[$i]->code . ". " ?></strong>
-                                    <span class="text-muted"><?php echo $data[$i]->name ?></span>
-                                </a>
-                            </div>
-                            <?php
-                            $i++;
-                            if ($i < $size)
-                            {
-                                ?>
-                                <div class="icon-box col-md-3 col-sm-4">
-                                    <a class="agile-icon" href="chitiettuyenxe.php?code=<?php echo $data[$i]->code ?>">
-                                        <i class="fa fa-bus" aria-hidden="true"></i>
-                                        <strong style="font-weight: bold"><?php echo $data[$i]->code . ". " ?></strong>
-                                        <span class="text-muted"><?php echo $data[$i]->name ?></span>
-                                    </a>
-                                </div>
-                                <?php
-                            }
-                            $i++;
-                            if ($i < $size)
-                            {
-                                ?>
-                                <div class="icon-box col-md-3 col-sm-4">
-                                    <a class="agile-icon" href="chitiettuyenxe.php?code=<?php echo $data[$i]->code ?>">
-                                        <i class="fa fa-bus"
-                                           aria-hidden="true"></i>
-                                        <strong style="font-weight: bold"><?php echo $data[$i]->code . ". " ?></strong>
-                                        <span class="text-muted"><?php echo $data[$i]->name ?></span>
-                                    </a>
-                                </div>
-                                <?php
-                            }
-                            $i++;
-                            if ($i < $size)
-                            {
-                                ?>
-                                <div class="icon-box col-md-3 col-sm-4">
-                                    <a class="agile-icon" href="chitiettuyenxe.php?code=<?php echo $data[$i]->code ?>">
-                                        <i class="fa fa-bus"
-                                           aria-hidden="true"></i>
-                                        <strong style="font-weight: bold"><?php echo $data[$i]->code . ". " ?></strong>
-                                        <span class="text-muted"><?php echo $data[$i]->name ?></span>
-                                    </a>
-                                </div>
-                                <?php
-                            }
-                            ?>
-                        </div>
-                        <?php
-                    }
-                    ?>
-                </section>
-            </div>
-        </div>
-    </div>
 </div>
-<!-- //icons page-->
+<!-- //Codes -->
 
 
 <!-- footer -->

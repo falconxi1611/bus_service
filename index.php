@@ -80,8 +80,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <li>
                             <a href="tuyen_xe.php">Tuyến xe</a>
                         </li>
-                        <li>
-                            <a href="gallery.html">Tìm kiếm</a>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quản lý
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu agile_short_dropdown">
+                                <li>
+                                    <a href="new.php">Thêm mới</a>
+                                </li>
+                                <li>
+                                    <a href="list.php">Cập nhật</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a href="contact.html">Liên hệ</a>

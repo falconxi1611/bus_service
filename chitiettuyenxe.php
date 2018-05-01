@@ -73,8 +73,18 @@ $data = json_decode(file_get_contents($api));
                         <li>
                             <a href="tuyen_xe.php">Tuyến xe</a>
                         </li>
-                        <li>
-                            <a href="gallery.html">Tìm kiếm</a>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quản lý
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu agile_short_dropdown">
+                                <li>
+                                    <a href="new.php">Thêm mới</a>
+                                </li>
+                                <li>
+                                    <a href="list.php">Cập nhật</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a href="contact.html">Liên hệ</a>
@@ -133,22 +143,23 @@ $data = json_decode(file_get_contents($api));
     <div class="container">
         <h3 class="bars">Tuyến xe buýt số <?php echo $data->code ?></h3>
         <strong>Mã số tuyến: </strong><?php echo $data->code . "<br/>" ?>
-        <strong>Tên tuyến: </strong><?php echo $data->name."<br/>" ?>
-        <strong>Lượt đi: </strong><?php echo $data->routeAB."<br/>" ?>
-        <strong>Lượt về: </strong><?php echo $data->routeBA."<br/>" ?>
-        <strong>Đơn vị đảm nhận: </strong><?php echo $data->agencies."<br/>" ?>
-        <strong>Loại hình hoạt động: </strong><?php echo $data->type."<br/>" ?>
-        <strong>Cự ly: </strong><?php echo $data->distance."<br/>" ?>
-        <strong>Loại xe: </strong><?php echo $data->vehicleType."<br/>" ?>
-        <strong>Thời gian hoạt động: </strong><?php echo $data->time."<br/>" ?>
+        <strong>Tên tuyến: </strong><?php echo $data->name . "<br/>" ?>
+        <strong>Lượt đi: </strong><?php echo $data->routeAB . "<br/>" ?>
+        <strong>Lượt về: </strong><?php echo $data->routeBA . "<br/>" ?>
+        <strong>Đơn vị đảm nhận: </strong><?php echo $data->agencies . "<br/>" ?>
+        <strong>Loại hình hoạt động: </strong><?php echo $data->type . "<br/>" ?>
+        <strong>Cự ly: </strong><?php echo $data->distance . "<br/>" ?>
+        <strong>Loại xe: </strong><?php echo $data->vehicleType . "<br/>" ?>
+        <strong>Thời gian hoạt động: </strong><?php echo $data->time . "<br/>" ?>
         <strong>Giá vé: </strong>
         <ul>
-            <li style="margin-left: 50px">Vé lượt: <?php echo $data->basicPrice." đ <br/>" ?></li>
-            <li style="margin-left: 50px">Vé học sinh: <?php echo $data->studentPrice." đ <br/>" ?></li>
-            <li style="margin-left: 50px">Vé tập: <?php echo $data->monthlyPrice." đ <br/>" ?></li></li>
+            <li style="margin-left: 50px">Vé lượt: <?php echo $data->basicPrice . " đ <br/>" ?></li>
+            <li style="margin-left: 50px">Vé học sinh: <?php echo $data->studentPrice . " đ <br/>" ?></li>
+            <li style="margin-left: 50px">Vé tập: <?php echo $data->monthlyPrice . " đ <br/>" ?></li>
+            </li>
         </ul>
-        <strong>Số chuyến:  </strong><?php echo $data->totalTrips."<br/>" ?>
-        <strong>Thời gian chuyến: </strong><?php echo $data->tripTime."<br/>" ?>
+        <strong>Số chuyến: </strong><?php echo $data->totalTrips . "<br/>" ?>
+        <strong>Thời gian chuyến: </strong><?php echo $data->tripTime . "<br/>" ?>
         <strong>Giãn cách chuyến: </strong><?php echo $data->tripSpacing ?>
     </
     >
